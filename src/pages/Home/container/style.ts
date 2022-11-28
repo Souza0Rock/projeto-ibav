@@ -67,6 +67,7 @@ export const Container = styled.div`
   padding: 20px 60px;
   @media(max-width: 800px){
     padding: 0px 0px;
+    align-self: center;
   }
 `
 
