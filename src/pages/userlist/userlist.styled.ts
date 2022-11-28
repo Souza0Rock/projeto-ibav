@@ -35,7 +35,7 @@ export const DivTextInformation = styled.div`
   align-items: center;
   justify-content: flex-end;
   width: 90%;  
-  margin: 80px auto 0;
+  margin: 80px auto 1rem;
   @media (max-width: 1280px) {
     display: flex;
     flex-direction: column;

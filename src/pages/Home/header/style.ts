@@ -20,7 +20,7 @@ const Container = styled.header`
 export const LogoIbav = styled.img`
     height: auto;
     width: auto;
-    margin-top: 40PX;
+    margin-top: 80px;
     cursor: pointer;
     @media(max-width: 800px){
         width: auto;

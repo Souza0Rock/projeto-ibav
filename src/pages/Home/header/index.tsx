@@ -4,18 +4,18 @@ interface Props {
   about?: boolean;
 }
 
-const Header = ({ about }: Props) => { 
+const Header = ({ about , teste} : any) => { 
 
   return (
     <Container>
       <a href="/"><LogoIbav src='../assets/radicaisbco.png'/></a>
       <DivBtn>
-        <BtnLink href= "/about.html">
+        {/* <BtnLink href= "/about.html">
           Sobre a convenção Radicais Livres
-        </BtnLink>
-        <BtnLink href="/userlist.html">
+        </BtnLink> */}
+        {teste && (<BtnLink href="/userlist.html">
           Lista de inscritos
-        </BtnLink>
+        </BtnLink>)}
         {about == true && (
           <BtnSign onClick={ () => window.location.href ='/'}>
             Inscreva-se

@@ -24,7 +24,7 @@ export const InputValues = styled.input`
 export const ContainerRight = styled.div`
     display: flex;
     align-items: center;
-		margin-right: 5%;
+		margin-right: 4.6%;
 `;
 
 export const ContainerLeft = styled.div`
