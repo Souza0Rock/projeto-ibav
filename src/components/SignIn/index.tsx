@@ -167,7 +167,7 @@ const SignIn = () => {
 													<S.Input
 														type="text"
 														onChange={(e: any) => setCity(e.target.value)}
-														style={{width: '18rem'}}
+														className="Input-width"
 													/>
 												</div>
 											</S.DivInput>

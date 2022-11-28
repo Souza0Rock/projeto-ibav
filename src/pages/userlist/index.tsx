@@ -13,6 +13,7 @@ import DivGeneral, {
   TextList
 } from "./userlist.styled";
 import Header from "../Home/header";
+import { normalizeRepeatedSlashes } from "next/dist/shared/lib/utils";
 
 const UserList = (Data) => {
   const [loading, setLoading] = useState<any>(true);
@@ -31,8 +32,6 @@ const UserList = (Data) => {
       }
     });
   }, [])
-
-  console.log(dataPayment, 'dataPayment')
 
   // useEffect(() => {
   //   const arrayEmailsAproved = dataPayment && dataPayment.map(item => {
@@ -92,7 +91,14 @@ const UserList = (Data) => {
 
 const teste = false
 
-console.log(validatePayment, 'validatePayment')
+// console.log(validatePayment, 'validatePayment')
+
+function removeDuplicates(data) {
+  return (
+    data
+  )
+}
+
   return (
     <>
       <Header about={true} teste={teste} />

@@ -40,7 +40,7 @@ export const DivTextInformation = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 0;
+    margin: 0 auto 1rem;
   }
 `
 
@@ -114,14 +114,17 @@ export const ModalSignUp = styled.div`
       width: 100%;
       padding: 30px 0px			
     }
+    @media(max-width: 1280px) {
+      margin-top: 4rem;
+    }
 `;
 
 export const TextList = styled.h2`
   color: #FFFFFF;
   margin-bottom: 20px;
-  text-align: center;
+  /* text-align: center; */
   text-transform: uppercase;
-  margin: 0;
+  margin: 0 auto;
   width: 44%;
 	@media (max-width: 768px) {
 		margin-bottom: 20px;
@@ -130,6 +133,8 @@ export const TextList = styled.h2`
 `
 
 export const DivList = styled.table`
+  width: 95%;
+  margin: 0 auto;
   background: #000000;
   tr:nth-child(odd) {
     background: #292431;

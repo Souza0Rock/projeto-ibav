@@ -120,7 +120,7 @@ export const Mask = styled.div`
 export const Formulary = styled.form`
     display: flex;
     flex-direction: column;
-    margin: 25px 0;    
+    margin: 10px 0;    
     & label {
       display: flex;
       text-transform: uppercase;
@@ -146,6 +146,10 @@ export const Formulary = styled.form`
     
     div {
       margin: 5px 0;
+    }
+
+    .Input-width {
+      width: 18rem;
     }
 `;
 
@@ -197,7 +201,7 @@ export const Select = styled.select`
     text-align: center;
     font-size: 20px;
     color: #4c1568;
-    margin-top: -15px;
+    /* margin-top: -15px; */
     font-weight: 600;
   `
 
