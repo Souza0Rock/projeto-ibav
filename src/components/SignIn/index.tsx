@@ -125,10 +125,10 @@ const SignIn = () => {
 		<>
 			{
 				<S.ContainerRight>
-					{validator ?
+					{data ?
 						<>
 							<S.ModalSign>
-								{qtdMax > validator?.length ?
+								{qtdMax > data?.length ?
 									<>
 										<S.Title Fsize={30}>
 											Faça sua <strong>inscrição</strong> agora

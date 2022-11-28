@@ -105,7 +105,7 @@ console.log(validatePayment, 'validatePayment')
           <>
             <ModalSignUp>
               <DivTextInformation>
-                <TextList>Lista de inscritos ( {validator && validator.length} )</TextList>
+                <TextList>Lista de inscritos ( {data && data.length} )</TextList>
                 {/* <TextInformation>Para pagamentos em boleto, espere até 3 dias úteis para a confirmação do pagamento</TextInformation> */}
               </DivTextInformation>
               <DivList>
