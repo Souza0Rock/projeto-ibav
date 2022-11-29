@@ -5,7 +5,7 @@ import DivGeneral, {
   DivName,
   List,
   DivList,
-  TextInformation,
+  // TextInformation,
   DivTextInformation,
   Loading,
   Describe,
@@ -13,14 +13,14 @@ import DivGeneral, {
   TextList
 } from "./userlist.styled";
 import Header from "../Home/header";
-import { normalizeRepeatedSlashes } from "next/dist/shared/lib/utils";
+// import { normalizeRepeatedSlashes } from "next/dist/shared/lib/utils";
 
 const UserList = (Data) => {
   const [loading, setLoading] = useState<any>(true);
   const [data, setData] = useState<any>([]);
-  const [dataPayment, setDataPayment] = useState<any>([])
-  const [validator, setValidator] = useState<any>([])
-  const [listValid, setListValid] = useState<any>([])
+  // const [dataPayment, setDataPayment] = useState<any>([])
+  // const [validator, setValidator] = useState<any>([])
+  // const [listValid, setListValid] = useState<any>([])
 
   const url = `https://ibav-culto-default-rtdb.firebaseio.com/data.json`
 
@@ -52,18 +52,16 @@ const UserList = (Data) => {
   //   setListValid(valid)
   // }, [dataPayment])
 
-
-  const Count = data.map((item: { name: any }[]) => item[1].name);
-
-  const listaDeInscritos = data.filter((item: any) => {
+  const Count = data.map((item: { name: any }[]) => item[1].name);let listaDeInscritos = data.filter((item: any) => {
     return item[1].status === 'ok'
   })
 
-  const listaDeEspera = data.filter((item: any) => {
-    return item[1].status === 'lista-espera'
-  })
+  // const listaDeEspera = data.filter((item: any) => {
+  //   return item[1].status === 'lista-espera'
+  // })
 
   // Função que transforma a lista em ordem alfabética
+  
   listaDeInscritos?.sort(function (a, b) {
     if (a[1].name < b[1].name) {
       return -1;
@@ -73,31 +71,23 @@ const UserList = (Data) => {
   });
 
   // Função que valida se a pessoa se cadastrou com o mesmo número de telefone e não deixa exibir em tela
-  const validatePayment = listaDeInscritos.filter(function (a) {
-    return !this[JSON.stringify(a[1].tel)] && (this[JSON.stringify(a[1].tel)] = true)
-  }, Object.create(null))
+  // const validatePayment = listaDeInscritos.filter(function (a) {
+  //   return !this[JSON.stringify(a[1].tel)] && (this[JSON.stringify(a[1].tel)] = true)
+  // }, Object.create(null))
 
 
-//   const teste = listaDeInscritos.filter(item => {
-//     listaDeInscritos = listaDeInscritos.find(item2 =>{
-// if(item2[1].tel && item[1].name){
+  let teste1 = listaDeInscritos.filter((item: { name: any; }[]) => {
+    listaDeInscritos = listaDeInscritos?.find((item2: { tel: any; }[]) =>{
+if(item2[1].tel && item[1].name){
 // console.log('dsajdklasdlkaj')
-// }
-//     })
-//   })
-// console.log(teste, 'teste')
+}
+    })
+  })
+
 
 // Função que oculta "lista de incritos do header"
 
-const teste = false
-
-// console.log(validatePayment, 'validatePayment')
-
-function removeDuplicates(data) {
-  return (
-    data
-  )
-}
+  const teste = false
 
   return (
     <>
@@ -127,20 +117,18 @@ function removeDuplicates(data) {
 
                   return (
                     <>
-                      
-                        <List>
-                          <ListDescribe>{item[1].name} {item[1].surname}</ListDescribe>
-                          <ListDescribe>{item[1].tel}</ListDescribe>
-                          <ListDescribe display="none">
-                            {item[1].office}
-                          </ListDescribe>
-                          <ListDescribe display="none">
-                            {item[1].sheperd}
-                          </ListDescribe>
-                          <ListDescribe display="none">{item[1].church}</ListDescribe>
-                          <ListDescribe display="none">{item[1].city}</ListDescribe>
-                        </List>
-                      
+                      <List>
+                        <ListDescribe>{item[1].name} {item[1].surname}</ListDescribe>
+                        <ListDescribe>{item[1].tel}</ListDescribe>
+                        <ListDescribe display="none">
+                          {item[1].office}
+                        </ListDescribe>
+                        <ListDescribe display="none">
+                          {item[1].sheperd}
+                        </ListDescribe>
+                        <ListDescribe display="none">{item[1].church}</ListDescribe>
+                        <ListDescribe display="none">{item[1].city}</ListDescribe>
+                      </List>
                     </>
                   );
                 })}
