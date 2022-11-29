@@ -71,21 +71,26 @@ const UserList = (Data) => {
   });
 
   // Função que valida se a pessoa se cadastrou com o mesmo número de telefone e não deixa exibir em tela
-  // const validatePayment = listaDeInscritos.filter(function (a) {
-  //   return !this[JSON.stringify(a[1].tel)] && (this[JSON.stringify(a[1].tel)] = true)
-  // }, Object.create(null))
 
+  const map = listaDeInscritos?.map((item: { sheperd: any; status: any; name: any; surname: any; office: any; email: any; city: any; church: any; tel: any; 
+}[]) => {
+    return {
+    name:`${item[1]?.name} ${item[1].surname}`,
+    tel: item[1].tel,
+    office: item[1].office,
+    sheperd: item[1].sheperd,
+    church: item[1].church,
+    city: item[1].city,
+    email: item[1].email,
+    status: item[1].status,
+  }
+})
 
-  let teste1 = listaDeInscritos.filter((item: { name: any; }[]) => {
-    listaDeInscritos = listaDeInscritos?.find((item2: { tel: any; }[]) =>{
-if(item2[1].tel && item[1].name){
-// console.log('dsajdklasdlkaj')
-}
-    })
-  })
-
-
-// Função que oculta "lista de incritos do header"
+const noRepeat = map.filter(function (a: { name: any; }) {
+  return !this[JSON.stringify(a.name)] && (this[JSON.stringify(a.name)] = true) 
+}, Object.create(null));
+  
+  // Função que não exibe lista de inscritos no header
 
   const teste = false
 
@@ -101,7 +106,7 @@ if(item2[1].tel && item[1].name){
           <>
             <ModalSignUp>
               <DivTextInformation>
-                <TextList>Lista de inscritos ( {data && data.length} )</TextList>
+                <TextList>Lista de inscritos ( {noRepeat && noRepeat.length} )</TextList>
                 {/* <TextInformation>Para pagamentos em boleto, espere até 3 dias úteis para a confirmação do pagamento</TextInformation> */}
               </DivTextInformation>
               <DivList>
@@ -113,21 +118,20 @@ if(item2[1].tel && item[1].name){
                   <Describe display="none">Igreja</Describe>
                   <Describe display="none">Cidade</Describe>
                 </DivName>
-                {data?.map((item: any) => {
-
+                {noRepeat && noRepeat?.map((item: any) => {
                   return (
                     <>
                       <List>
-                        <ListDescribe>{item[1].name} {item[1].surname}</ListDescribe>
-                        <ListDescribe>{item[1].tel}</ListDescribe>
+                        <ListDescribe>{item?.name} </ListDescribe>
+                        <ListDescribe>{item?.tel}</ListDescribe>
                         <ListDescribe display="none">
-                          {item[1].office}
+                          {item?.office}
                         </ListDescribe>
                         <ListDescribe display="none">
-                          {item[1].sheperd}
+                          {item?.sheperd}
                         </ListDescribe>
-                        <ListDescribe display="none">{item[1].church}</ListDescribe>
-                        <ListDescribe display="none">{item[1].city}</ListDescribe>
+                        <ListDescribe display="none">{item?.church}</ListDescribe>
+                        <ListDescribe display="none">{item?.city}</ListDescribe>
                       </List>
                     </>
                   );

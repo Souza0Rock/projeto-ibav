@@ -150,6 +150,9 @@ export const Formulary = styled.form`
 
     .Input-width {
       width: 18rem;
+      @media(max-width: 800px) {
+        width: 100%;
+      }
     }
 `;
 

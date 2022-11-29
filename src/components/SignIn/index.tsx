@@ -3,6 +3,7 @@ import * as S from './styled'
 import { Input } from "./styled";
 import axios from "axios";
 import InputMask from "react-input-mask";
+import { Router } from "next/dist/client/router";
 
 
 const SignIn = () => {
@@ -34,30 +35,16 @@ const SignIn = () => {
 				email,
 				status: 'ok'
 			})
-				// .then(() => {
-				// 	if (whatLote === '1° Lote R$ 40,00') {
-				// 		window.location.href = 'https://mpago.la/1GuyTRq';
-				// 	}
-				// 	else if (whatLote === '2° Lote R$ 50,00') {
-				// 		window.location.href = 'https://mpago.la/29CTH6z';
-				// 	}
-				// 	else if (whatLote === '3° Lote R$ 60,00') {
-				// 		window.location.href = 'https://mpago.la/14bcJRV';
-				// 	}
-				// 	{
-				// 		alert("Sua inscrição será concluída após a confirmação do pagamento")
-				// 	}
-				// })
-				.catch((error) => {
-					alert("Preencha todos os campos para concluir a sua inscrição")
-				})
+			.catch((error) => {
+				alert("Preencha todos os campos para concluir a sua inscrição")
+			})
 		}
 		catch (e) {
 			throw new Error("Algo deu errado na conexão");
 		}
 	}
 
-	const qtdMax = 200
+	const qtdMax = 201
 	const url = `https://ibav-culto-default-rtdb.firebaseio.com/data.json`
 
 	useEffect(() => {
@@ -119,6 +106,16 @@ const SignIn = () => {
 		// }
 	}, []);
 
+	const redirect = () => {
+		if (name && tel && church && sheperd && office && city) {
+			saveData();
+			window.location.href ="/userlist.html";
+		}
+		else {
+			alert("Preencha todos os campos para concluir a sua inscrição");
+		}
+	}
+	
 	const Count = data.map((item: { name: any }[]) => item[1].name);
 
 	return (
@@ -201,11 +198,7 @@ const SignIn = () => {
 										</S.Formulary>
 										<S.TextEnd>Restam {qtdMax - data.length} vagas</S.TextEnd>
 										<S.ButtonSignUp
-											onClick={() => {
-												name && tel && church && sheperd && office && city
-													? saveData()
-													: alert("Preencha todos os campos para concluir a sua inscrição")
-											}}
+											onClick={() => {redirect()}}
 										>
 											Inscreva-se
 										</S.ButtonSignUp>

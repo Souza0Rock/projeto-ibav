@@ -78,7 +78,7 @@ export const ListDescribe = styled.td<Props>`
   padding: auto 8px;
   width: 20%;
   font-size: 12px;
-  margin-left: 20px;
+  margin-left: 22px;
   @media (max-width: 800px) {
     display: ${({ display }) => display && `${display}`};
     width: 100%;
