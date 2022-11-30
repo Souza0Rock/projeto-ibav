@@ -136,16 +136,16 @@ const SignIn = () => {
 										<S.Formulary>
 											<div className="DivControl">
 												<label>Nome:</label>
-												<S.Input type="text" onChange={(e: any) => setName(e.target.value)} />
+												<S.Input type="text" onChange={(e: any) => setName(e.target.value)} required={true} />
 											</div>
 											<div className="DivControl">
 												<label>Sobrenome:</label>
-												<S.Input type="text" onChange={(e: any) => setSurname(e.target.value)} />
+												<S.Input type="text" onChange={(e: any) => setSurname(e.target.value)} required={true} />
 											</div>
 											<div className="DivControl">
 												<label>Email:</label>
 												<S.BoxInputText>
-													<S.Input type="email" onChange={(e: any) => setEmail(e.target.value)} required />
+													<S.Input type="email" onChange={(e: any) => setEmail(e.target.value)} required={true} />
 												</S.BoxInputText>
 												{/* <S.DivTextEmail>
 													<S.TextEmail>É extremamente importante usar o mesmo email que será usado no ato do </S.TextEmail>
@@ -156,7 +156,7 @@ const SignIn = () => {
 												<div className="DivInput">
 													<label>Telefone:</label>
 													<S.Mask>
-														<InputMask mask="(99)99999-9999" onChange={(e: any) => setTel(e.target.value)} />
+														<InputMask mask="(99)99999-9999" onChange={(e: any) => setTel(e.target.value)} required={true} />
 													</S.Mask>
 												</div>
 												<div className="DivControl">
@@ -164,6 +164,7 @@ const SignIn = () => {
 													<S.Input
 														type="text"
 														onChange={(e: any) => setCity(e.target.value)}
+														required={true}
 														className="Input-width"
 													/>
 												</div>
@@ -173,6 +174,7 @@ const SignIn = () => {
 												<S.Input
 													type="text"
 													onChange={(e: any) => setSheperd(e.target.value)}
+													required={true}
 												/>
 											</div>
 											<S.DivInput>

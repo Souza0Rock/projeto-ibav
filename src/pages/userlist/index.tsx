@@ -15,6 +15,10 @@ import DivGeneral, {
 import Header from "../Home/header";
 // import { normalizeRepeatedSlashes } from "next/dist/shared/lib/utils";
 
+if (typeof window !== 'undefined') {
+  document.title = 'IBAV RP - Lista de inscritos'
+}
+
 const UserList = (Data) => {
   const [loading, setLoading] = useState<any>(true);
   const [data, setData] = useState<any>([]);
@@ -107,7 +111,6 @@ const noRepeat = map.filter(function (a: { name: any; }) {
             <ModalSignUp>
               <DivTextInformation>
                 <TextList>Lista de inscritos ( {noRepeat && noRepeat.length} )</TextList>
-                {/* <TextInformation>Para pagamentos em boleto, espere até 3 dias úteis para a confirmação do pagamento</TextInformation> */}
               </DivTextInformation>
               <DivList>
                 <DivName>

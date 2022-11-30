@@ -64,8 +64,9 @@ export const Describe = styled.td<Props>`
   margin-left: 20px;
   @media (max-width: 800px) {
     display: ${({ display }) => display && `${display}`};
-    margin-left: ${({ marginLeft }) => marginLeft && `${marginLeft}`};
+    margin: 0;
     width: 25%;
+    text-align: center;
   }
 `;
 
@@ -78,12 +79,12 @@ export const ListDescribe = styled.td<Props>`
   padding: auto 8px;
   width: 20%;
   font-size: 12px;
-  margin-left: 22px;
+  margin-left: 20px;
   @media (max-width: 800px) {
     display: ${({ display }) => display && `${display}`};
     width: 100%;
     text-align: center;
-		margin-left: 2px;
+		margin-left: 0;
 		justify-content: space-between;
   }
 `;
@@ -96,10 +97,10 @@ export const DivName = styled.th`
   background: #4c1568;
   color: white;
   margin: 0;
-  padding-right: 15px;
   justify-content: space-between;
   @media (max-width: 800px) {
     font-size: 15px;
+    justify-content: space-around;
   }
 `;
 

@@ -24,7 +24,10 @@ export const InputValues = styled.input`
 export const ContainerRight = styled.div`
     display: flex;
     align-items: center;
-		margin-right: 4.6%;
+		margin: 5%;
+    @media (max-width: 900px) {
+      margin: 39px;
+    }
 `;
 
 export const ContainerLeft = styled.div`
@@ -32,6 +35,9 @@ export const ContainerLeft = styled.div`
     flex-direction: column;
     align-items: center;
     margin-left: 3%;
+    @media(max-width: 912px){
+        margin: 0;
+    }
     @media(max-width:800px){
         display: none;
     }
@@ -72,8 +78,10 @@ export const Container = styled.div`
 `
 
 export const LogoEvent = styled.img`
-  height: 45vh;
-  width: 35vw;
+  width: 70%;
+  @media (max-width: 912px) {
+    width: 100%;
+  }
 `
 
 export const Text = styled.div`

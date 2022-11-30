@@ -7,9 +7,9 @@ export const ContainerRight = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    @media (max-width: 768px) {
+    /* @media (max-width: 768px) {
         margin-left: 5%;
-    }
+    } */
 `;
 
 export const ModalSign = styled.div`
