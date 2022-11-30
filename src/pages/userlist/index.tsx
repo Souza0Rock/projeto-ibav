@@ -73,6 +73,7 @@ const UserList = (Data) => {
       return 1;
     }
   });
+  
 
   // Função que valida se a pessoa se cadastrou com o mesmo número de telefone e não deixa exibir em tela
   
@@ -97,6 +98,7 @@ const UserList = (Data) => {
   // Função que não exibe lista de inscritos no header
 
   const teste = false
+  console.log(noRepeat, 'teste');
 
   return (
     <>

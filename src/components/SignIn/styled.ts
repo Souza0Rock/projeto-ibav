@@ -154,6 +154,9 @@ export const Formulary = styled.form`
         width: 100%;
       }
     }
+    .Input-tel {
+      min-width: 8rem;
+    }
 `;
 
 

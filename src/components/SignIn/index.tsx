@@ -40,7 +40,7 @@ const SignIn = () => {
 	}
 	}
 
-	const qtdMax = 200 + 1
+	const qtdMax = 200
 	const url = `https://ibav-culto-default-rtdb.firebaseio.com/data.json`
 
 	useEffect(() => {
@@ -119,7 +119,7 @@ const SignIn = () => {
 												<div className="DivInput">
 													<label>Telefone:</label>
 													<S.Mask>
-														<InputMask mask="(99)99999-9999" onChange={(e: any) => setTel(e.target.value)} required={true} />
+														<InputMask mask="(99)99999-9999" onChange={(e: any) => setTel(e.target.value)} required={true} className="Input-tel" />
 													</S.Mask>
 												</div>
 												<div className="DivControl">
