@@ -3,8 +3,6 @@ import * as S from './styled'
 import { Input } from "./styled";
 import axios from "axios";
 import InputMask from "react-input-mask";
-import { Router } from "next/dist/client/router";
-
 
 const SignIn = () => {
 	const [name, setName] = useState("")
@@ -16,13 +14,10 @@ const SignIn = () => {
 	const [city, setCity] = useState("")
 	const [office, setOffice] = useState("")
 	const [data, setData] = useState<any>([])
-	const [whatLote, setWhatLote] = useState("")
 	const [loading, setLoading] = useState<any>(true);
-	const [dataPayment, setDataPayment] = useState<any>()
-	const [validator, setValidator] = useState<any>([])
-	const [listValid, setListValid] = useState<any>([])
 
 	const saveData = () => {
+		if (name && tel && church && sheperd && office && city){
 		try {
 			axios.post(url, {
 				name,
@@ -35,16 +30,17 @@ const SignIn = () => {
 				email,
 				status: 'ok'
 			})
-			.catch((error) => {
-				alert("Preencha todos os campos para concluir a sua inscrição")
-			})
+			.then(() => window.location.href = "/userlist.html")
 		}
 		catch (e) {
 			throw new Error("Algo deu errado na conexão");
 		}
+	}else {
+		alert("Preencha todos os campos")
+	}
 	}
 
-	const qtdMax = 201
+	const qtdMax = 200 + 1
 	const url = `https://ibav-culto-default-rtdb.firebaseio.com/data.json`
 
 	useEffect(() => {
@@ -56,34 +52,23 @@ const SignIn = () => {
     });
 }, [])
 
+	const map = data?.map((item: { sheperd: any; status: any; name: any; surname: any; office: any; email: any; city: any; church: any; tel: any; 
+	}[]) => {
+	return {
+	name:`${item[1]?.name} ${item[1].surname}`,
+	tel: item[1].tel,
+	office: item[1].office,
+	sheperd: item[1].sheperd,
+	church: item[1].church,
+	city: item[1].city,
+	email: item[1].email,
+	status: item[1].status,
+	}
+	})
 
-    const limit = 50
-
-
-	// useEffect(() => {
-	// 	const arrayEmailsAproved = dataPayment && dataPayment.map(item => {
-	// 		if (item.status === 'approved') {
-	// 			return item.payer.email.toLowerCase()
-	// 		}
-	// 		return ''
-	// 	})
-
-	// 	const filtrado = arrayEmailsAproved && arrayEmailsAproved.filter(item => {
-	// 		return item !== ''
-	// 	})
-
-	// 	const valid = dataPayment && dataPayment.map(item => {
-	// 		return item.payer.email
-	// 	})
-
-	// 	setValidator(filtrado)
-	// 	setListValid(valid)
-	// }, [dataPayment])
-
-	// const firstLote = new Date('June 25, 2022 23:59:59')
-	// const secondLote = new Date('July 24, 2022 23:59:59')
-	// const thirdLote = new Date('July 31, 2022 23:59:59')
-	// const today = new Date()
+	const noRepeat = map.filter(function (a: { name: any; }) {
+	return !this[JSON.stringify(a.name).toLowerCase()] && (this[JSON.stringify(a.name).toLowerCase()] = true) 
+	}, Object.create(null));
 
 	useEffect(() => {
 		axios.get(url)
@@ -92,32 +77,10 @@ const SignIn = () => {
 					setData(Object.entries(res.data));
 				}
 			});
-		// if (firstLote >= today) {
-		// 	setWhatLote('1° Lote R$ 40,00')
-		// }
-		// else if (secondLote >= today) {
-		// 	setWhatLote('2° Lote R$ 50,00')
-		// }
-		// else if (thirdLote >= today) {
-		// 	setWhatLote('3° Lote R$ 60,00')
-		// }
-		// else {
-		// 	setWhatLote('Inscrições encerradas')
-		// }
 	}, []);
 
-	const redirect = () => {
-		if (name && tel && church && sheperd && office && city) {
-			saveData();
-			window.location.href ="/userlist.html";
-		}
-		else {
-			alert("Preencha todos os campos para concluir a sua inscrição");
-		}
-	}
+	console.log(noRepeat, 'no repeat');
 	
-	const Count = data.map((item: { name: any }[]) => item[1].name);
-
 	return (
 		<>
 			{
@@ -198,9 +161,9 @@ const SignIn = () => {
 												</div>
 											</S.DivInput>
 										</S.Formulary>
-										<S.TextEnd>Restam {qtdMax - data.length} vagas</S.TextEnd>
+										<S.TextEnd>Restam {qtdMax - noRepeat.length} vagas</S.TextEnd>
 										<S.ButtonSignUp
-											onClick={() => {redirect()}}
+											onClick={() => saveData()}
 										>
 											Inscreva-se
 										</S.ButtonSignUp>

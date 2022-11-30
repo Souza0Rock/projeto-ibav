@@ -75,9 +75,9 @@ const UserList = (Data) => {
   });
 
   // Função que valida se a pessoa se cadastrou com o mesmo número de telefone e não deixa exibir em tela
-
+  
   const map = listaDeInscritos?.map((item: { sheperd: any; status: any; name: any; surname: any; office: any; email: any; city: any; church: any; tel: any; 
-}[]) => {
+  }[]) => {
     return {
     name:`${item[1]?.name} ${item[1].surname}`,
     tel: item[1].tel,
@@ -90,9 +90,9 @@ const UserList = (Data) => {
   }
 })
 
-const noRepeat = map.filter(function (a: { name: any; }) {
-  return !this[JSON.stringify(a.name)] && (this[JSON.stringify(a.name)] = true) 
-}, Object.create(null));
+  const noRepeat = map.filter(function (a: { name: any; }) {
+    return !this[JSON.stringify(a.name).toLowerCase()] && (this[JSON.stringify(a.name).toLowerCase()] = true) 
+  }, Object.create(null));
   
   // Função que não exibe lista de inscritos no header
 
