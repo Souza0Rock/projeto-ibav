@@ -40,7 +40,7 @@ const SignIn = () => {
 	}
 	}
 
-	const qtdMax = 200
+	const qtdMax = 220
 	const url = `https://ibav-culto-default-rtdb.firebaseio.com/data.json`
 
 	useEffect(() => {

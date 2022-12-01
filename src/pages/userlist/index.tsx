@@ -67,7 +67,7 @@ const UserList = (Data) => {
   // Função que transforma a lista em ordem alfabética
   
   listaDeInscritos?.sort(function (a, b) {
-    if (a[1].name < b[1].name) {
+    if (a[1].name.toLowerCase() < b[1].name.toLowerCase()) {
       return -1;
     } else {
       return 1;
